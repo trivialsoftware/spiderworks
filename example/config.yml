@@ -1,0 +1,20 @@
+# Deluge options
+temaplates: 'templates'
+static: 'static'
+pages: 'pages'
+output: 'dist'
+
+# Options for the `marked` Markdown parser
+marked:
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false
+
+# Options for the `nunjucks` templating system
+nunjucks:
+    autoescape: true
+    trimBlocks: true
