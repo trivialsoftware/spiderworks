@@ -1,8 +1,9 @@
 # Deluge options
-temaplates: 'templates'
-static: 'static'
-pages: 'pages'
-output: 'dist'
+directories:
+    temaplates: 'templates'
+    static: 'static'
+    pages: 'pages'
+    output: 'dist'
 
 # Options for the `marked` Markdown parser
 marked:
