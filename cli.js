@@ -1,0 +1,114 @@
+//----------------------------------------------------------------------------------------------------------------------
+/// Main Deluge Script
+///
+/// @module
+//----------------------------------------------------------------------------------------------------------------------
+
+var path = require('path');
+var program = require('commander');
+
+var pkg = require('./package');
+var paths = require('./lib/paths');
+var contentGen = require('./lib/generator');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+program.version(pkg.version);
+
+//----------------------------------------------------------------------------------------------------------------------
+// `create` command
+//----------------------------------------------------------------------------------------------------------------------
+
+program
+    .command('create <site>')
+    .alias('new')
+    .description('Creates a new default site with the name <site>.')
+    .action((site) =>
+    {
+        console.log('Create:', site);
+    });
+
+//----------------------------------------------------------------------------------------------------------------------
+// `generate` command
+//----------------------------------------------------------------------------------------------------------------------
+
+program
+    .command('clean [directory]')
+    .description('Cleans the generated source files from <directory>.')
+    .action((directory) =>
+    {
+        var sourceDir = process.cwd();
+        if(directory)
+        {
+            sourceDir = path.join(sourceDir, directory);
+        } // end if
+
+        paths.sourceDir = sourceDir;
+        contentGen.clean(sourceDir)
+            .then(() =>
+            {
+                console.log('Clean complete.');
+            })
+            .catch((error) =>
+            {
+                //TODO: Better error handling?
+                console.error(`Clean Error: \n ${ error.stack || error }`);
+                process.exit(1);
+            });
+    });
+
+//----------------------------------------------------------------------------------------------------------------------
+// `generate` command
+//----------------------------------------------------------------------------------------------------------------------
+
+program
+    .command('generate [directory]')
+    .description('Generates the site from the source files in <directory>.')
+    .option("-c, --clean", "clean the output directory before generation")
+    .action((directory, options) =>
+    {
+        var sourceDir = process.cwd();
+        if(directory)
+        {
+            sourceDir = path.join(sourceDir, directory);
+        } // end if
+
+        paths.sourceDir = sourceDir;
+        contentGen.generate(sourceDir, { clean: options.clean })
+            .then(() =>
+            {
+                console.log('Generation complete.');
+            })
+            .catch((error) =>
+            {
+                //TODO: Better error handling?
+                console.error(`Generation Error: \n ${ error.stack || error }`);
+                process.exit(1);
+            });
+    });
+
+//----------------------------------------------------------------------------------------------------------------------
+// `watch` command
+//----------------------------------------------------------------------------------------------------------------------
+
+program
+    .command('watch')
+    .description('Starts a development server and watches the source folder for changes.')
+    .option("-p, --port <port>", "The port to start the development HTTP server on")
+    .action((options) =>
+    {
+        console.log('Watch!', options);
+    });
+
+//----------------------------------------------------------------------------------------------------------------------
+
+// Print the help text if nothing was input
+if(process.argv.length < 3)
+{
+    program.outputHelp();
+} // end if
+
+// Parse the arguments
+program.parse(process.argv);
+
+//----------------------------------------------------------------------------------------------------------------------

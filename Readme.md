@@ -52,13 +52,19 @@ however, a few tags that Deluge looks for that control some of the options for h
 ## TODO
 
 * [ ] Generation
+    * [ ] Create stub site
 	* [X] Generate pages from Markdown
 	* [X] Copy static files
 	* [X] Multiple Renderers Support
         * [X] HTML Renderer
         * [X] JSON Renderer
+        * [ ] TrivialDB Renderer
 * [ ] Utility
     * [ ] CLI
+        * [ ] `create` - Creates a new site
+        * [X] `clean` - Cleans the generated files
+        * [X] `generate` - Generates the site from source code
+        * [ ] `watch` - Starts a development server, and watched the source directory for changes
     * [ ] Development Server
         * [ ] File Watcher (rebuilds when there's changes)
         * [ ] HTTP Server

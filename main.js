@@ -8,17 +8,6 @@ var contentGen = require('./lib/generator');
 
 //----------------------------------------------------------------------------------------------------------------------
 
-contentGen.generate(process.cwd())
-    .then(() =>
-    {
-        console.log('Generation complete.');
-        process.exit(0);
-    })
-    .catch((error) =>
-    {
-        //TODO: Better error handling?
-        console.error(`Error: \n ${ error.stack }`);
-        process.exit(1);
-    });
+module.exports = contentGen;
 
 //----------------------------------------------------------------------------------------------------------------------
