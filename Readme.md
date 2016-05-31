@@ -64,10 +64,10 @@ however, a few tags that Deluge looks for that control some of the options for h
         * [ ] `create` - Creates a new site
         * [X] `clean` - Cleans the generated files
         * [X] `generate` - Generates the site from source code
-        * [ ] `watch` - Starts a development server, and watched the source directory for changes
-    * [ ] Development Server
-        * [ ] File Watcher (rebuilds when there's changes)
-        * [ ] HTTP Server
+        * [X] `watch` - Starts a development server, and watched the source directory for changes
+    * [X] Development Server
+        * [X] File Watcher (rebuilds when there's changes)
+        * [X] HTTP Server
     * [ ] Nunjucks Filters
         * [ ] `date` filter (moment.js)
         * [ ] `fromNow` filter (moment.js)
