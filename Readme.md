@@ -49,6 +49,14 @@ however, a few tags that Deluge looks for that control some of the options for h
 
 ...
 
+## Customization
+
+...
+
+## CLI
+
+...
+
 ## TODO
 
 * [ ] Generation
@@ -58,7 +66,6 @@ however, a few tags that Deluge looks for that control some of the options for h
 	* [X] Multiple Renderers Support
         * [X] HTML Renderer
         * [X] JSON Renderer
-        * [ ] TrivialDB Renderer
 * [ ] Utility
     * [ ] CLI
         * [ ] `create` - Creates a new site
