@@ -37,5 +37,3 @@ Find the first post [here](/blog/first-blog-post).
 ## Test
 
 {{ created | fromNow }}
-
-

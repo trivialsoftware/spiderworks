@@ -71,4 +71,7 @@ however, a few tags that Deluge looks for that control some of the options for h
     * [X] Nunjucks Filters
         * [X] `date` filter (moment.js)
         * [X] `fromNow` filter (moment.js)
+    * [X] Customization Support
+        * [X] `marked` customization
+        * [X] Nunjucks customization (add filters, etc.)
 * [ ] Documentation
