@@ -6,7 +6,7 @@ title: 'Home Page'
 
 # Welcome to Spiderworks
 
-<div class="btn-toolbar">
+<div class="btn-toolbar" style="margin-bottom: 10px;">
     <a href="#" class="btn btn-large btn-primary">
         Spiderworks homepage
     </a>
