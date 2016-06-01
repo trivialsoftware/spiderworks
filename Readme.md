@@ -1,7 +1,7 @@
-# Deluge
+# Spiderworks
 
-Deluge is a flat-file, markdown based CMS. It's designed to be very easy to get started with, and infinitely extensible.
-Building a static website with Deluge should be trivial.
+Spiderworks is a flat-file, markdown based CMS. It's designed to be very easy to get started with, and infinitely extensible.
+Building a static website with Spiderworks should be trivial.
 
 If you can't figure it out from here, then we didn't want you using us anyway! <br>
 (_Note: replace that line once we write docs._)
@@ -12,7 +12,7 @@ If you can't figure it out from here, then we didn't want you using us anyway! <
 
 ## Pages
 
-A 'page' in Deluge is a markdown file with a `YML` section at the top (frequently refered to as 'frontmatter'). Here's
+A 'page' in Spiderworks is a markdown file with a `YML` section at the top (frequently refered to as 'frontmatter'). Here's
 a simple example:
 
 ```markdown
@@ -39,7 +39,7 @@ a simple example:
 ```
 
 The frontmatter is appended to the page's context when it's being rendered, and supports arbitrary tags. There are,
-however, a few tags that Deluge looks for that control some of the options for how the page gets rendered.
+however, a few tags that Spiderworks looks for that control some of the options for how the page gets rendered.
 
 ### Options
 

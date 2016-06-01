@@ -1,10 +1,10 @@
 {
-  "name": "deluge",
+  "name": "spiderworks",
   "version": "0.1.0",
   "description": "A simple, markdown-based flat-file CMS.",
   "main": "main.js",
   "bin": {
-    "deluge": "./cli.js"
+    "spiderworks": "./cli.js"
   },
   "engine": "node >=6.0.0",
   "scripts": {

@@ -1,4 +1,4 @@
-# Deluge options
+# Spiderworks options
 directories:
     temaplates: 'templates'
     static: 'static'
@@ -17,5 +17,4 @@ marked:
 
 # Options for the `nunjucks` templating system
 nunjucks:
-    autoescape: true
     trimBlocks: true
