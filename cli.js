@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 //----------------------------------------------------------------------------------------------------------------------
 /// Main Spiderworks Script
 ///
@@ -27,7 +29,17 @@ program
     .description('Creates a new default site with the name <site>.')
     .action((site) =>
     {
-        console.log('Create:', site);
+        console.log(chalk.magenta('>> ') + `Creating "${ chalk.cyan(site) }".`);
+        contentGen.create(site)
+            .then(() =>
+            {
+                console.log(chalk.yellow('>> ') + chalk.green('Done.'));
+            })
+            .catch((error) =>
+            {
+                console.error(`Create Error: \n ${ error.stack || error }`);
+                process.exit(1);
+            });
     });
 
 //----------------------------------------------------------------------------------------------------------------------

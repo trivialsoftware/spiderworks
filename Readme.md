@@ -3,9 +3,6 @@
 Spiderworks is a flat-file, markdown based CMS. It's designed to be very easy to get started with, and infinitely extensible.
 Building a static website with Spiderworks should be trivial.
 
-If you can't figure it out from here, then we didn't want you using us anyway! <br>
-(_Note: replace that line once we write docs._)
-
 ## Site Configuration
 
 ...
@@ -59,16 +56,16 @@ however, a few tags that Spiderworks looks for that control some of the options 
 
 ## TODO
 
-* [ ] Generation
-    * [ ] Create stub site
+* [X] Generation
+    * [X] Create stub site
 	* [X] Generate pages from Markdown
 	* [X] Copy static files
 	* [X] Multiple Renderers Support
         * [X] HTML Renderer
         * [X] JSON Renderer
-* [ ] Utility
-    * [ ] CLI
-        * [ ] `create` - Creates a new site
+* [X] Utility
+    * [X] CLI
+        * [X] `create` - Creates a new site
         * [X] `clean` - Cleans the generated files
         * [X] `generate` - Generates the site from source code
         * [X] `watch` - Starts a development server, and watched the source directory for changes
