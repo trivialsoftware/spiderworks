@@ -34,3 +34,8 @@ After that, there's not much else to worry about.
 
 Find the first post [here](/blog/first-blog-post).
 
+## Test
+
+{{ created | fromNow }}
+
+
