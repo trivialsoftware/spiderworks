@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="pull-right" style="padding-top: 40px;">
-	<small class="text-muted">by {{ author }} on {{ created }}</small>
+	<small class="text-muted">by {{ author }} on {{ created | date("MMM Do, YYYY") }}</small>
 </div>
 
 <h1>{{ title }}</h1>

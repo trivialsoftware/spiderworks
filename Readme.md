@@ -68,7 +68,7 @@ however, a few tags that Deluge looks for that control some of the options for h
     * [X] Development Server
         * [X] File Watcher (rebuilds when there's changes)
         * [X] HTTP Server
-    * [ ] Nunjucks Filters
-        * [ ] `date` filter (moment.js)
-        * [ ] `fromNow` filter (moment.js)
+    * [X] Nunjucks Filters
+        * [X] `date` filter (moment.js)
+        * [X] `fromNow` filter (moment.js)
 * [ ] Documentation

@@ -26,10 +26,11 @@ After that, there's not much else to worry about.
 <div>
     <img src="../static/images/best_friend.png" title="My Best Friend" width="125">
     <div style="width: 125px; text-align: center">
-        <small><i>"Howdey."</i></small>
+        <small><i>"Howdy."</i></small>
     </div>
 </div>
 
 ## What about that blog?
 
 Find the first post [here](/blog/first-blog-post).
+
