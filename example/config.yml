@@ -1,6 +1,6 @@
 # Spiderworks options
 directories:
-    temaplates: 'templates'
+    templates: 'templates'
     static: 'static'
     pages: 'pages'
     output: 'dist'
