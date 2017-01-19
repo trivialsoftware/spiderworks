@@ -191,28 +191,147 @@ recommend just use the `create` command.
 
 #### Manual Creation
 
-...
+As mentioned above, all Spiderworks _needs_ is a `config.yml`. However, in order to be useful, it expects a folder with
+the following layout:
+
+```
+my-project
+├── site.js
+├── config.yml
+├── pages
+│   └── index.md
+├── static
+│   └── <any static assets>
+└── templates
+    ├── base.html
+    └── default.html
+```
+
+You can see a good example of this by looking at the [template](./template) we use for creating new projects. You can
+customize the directories that Spiderworks looks in, however, we picked what we felt were the most sane names.
+
+##### `site.js`
+
+This is a customization file for the nunjucks renderer. (See [Site Configuration](#customizing-the-nunjucks-renderer-via-sitejs) below.)
+
+##### `config.yml`
+
+This is your site configuration file. It is **required**. (See [Site Configuration](#site-configuration) below.)
+
+##### `pages`
+
+This is the directory that (by default) Spiderworks scans for markdown files. It will find anything with the extension
+`.md` and render that as an html page, keeping the path relative to the `pages` folder the same.
+
+##### `static`
+
+This folder is optional, and holds any static content (images, etc) you wish to host on your site.
+
+##### `templates`
+
+This is the folder that (by default) Spiderworks looks in for nunjucks templates. When you specify a template in your
+frontmater, it will look in this folder.
 
 ### Site Configuration
 
-...
+You can configure the various folders and other settings Spiderworks uses. By default, this is the configuration
+Spiderworks uses:
 
-## Options
+```yml
+# Spiderworks options
+directories:
+	templates: 'templates'
+    static: 'static'
+    pages: 'pages'
+    output: 'dist'
 
-...
+# Options for the `marked` Markdown parser
+marked:
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false
 
-### Customization via code
+# Options for the `nunjucks` templating system
+nunjucks:
+    trimBlocks: true
+```
 
-...
+All of these options should be self explanatory, or should be easily found by looking at the documentation for
+[marked](https://github.com/chjj/marked/blob/master/README.md) or [nunjucks](https://mozilla.github.io/nunjucks/templating.html).
+
+#### Customizing the nunjucks renderer via `site.js`
+
+Sometimes the customization that needs to happen, must happen in code. For exampled, `marked` allows you to customize
+the way some tags are rendered. But to do this, you need to use javascript. Spiderworks allows you to specify a `site.js`
+file that it will load.
+
+This file _must_ be a nodejs module, and it needs ot export a function named `nunjucks`. It will be called with `nunjucks`
+module, the `nunjucks` environment, and the `marked` module.
+
+Here is an example that wraps all tables in a bootstrap table.
+
+```javascript
+function nunjucks(nunjucks, env, marked)
+{
+    // Create a new markdown renderer
+    const renderer = new marked.Renderer();
+
+    // Wrap all generated tables in the bootstrap boilerplate to make them responsive
+    renderer.table = function(header, body)
+    {
+        return `<table class="table"><thead>${header}</thead><tbody>${body}</tbody></table>`;
+    }; // end table parsing
+
+	// Note: This overrides anything in `config.yml`!!
+    // Configure marked parser
+    marked.setOptions({
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: false,
+        renderer: renderer
+    });
+} // end nunjucks
+
+module.exports = { nunjucks }
+```
 
 ## CLI
 
-...
+When you install Spiderworks, you get the `spiderworks` commandline script installed on your system. This gives your
+access to several commands that do the heavy lifting of developing or generating your site. To find out what commands
+are supported, simply do `spiderworks --help`. Here is an example of the output:
 
-### GitLab Pages Setup
+```
+$ spiderworks --help
+
+  Usage: spiderworks [options] [command]
+
+
+  Commands:
+
+    create|new <site>               Creates a new default site with the name <site>.
+    clean [directory]               Cleans the generated source files from <directory>.
+    generate [options] [directory]  Generates the site from the source files in <directory>.
+    watch [options] [directory]     Starts a development server and watches the source folder for changes.
+
+  Options:
+
+    -h, --help     output usage information
+    -V, --version  output the version number
+```
+
+## GitLab Pages Setup
 
 Just in case you want to deploy your Spiderworks site through GitLab Pages, I've provided an example for you. (This is a
-modified version of [this config](https://about.gitlab.com/2016/04/07/gitlab-pages-setup/#option-c-gitlab-ci-for-hexo-websites).)
+modified version of [this config](https://docs.gitlab.com/ee/pages/README.html#how-gitlab-ci-yml-looks-like-when-using-a-static-generator).)
 
 In your `config.yml`, you will need to set your output directory to `public`:
 
@@ -227,10 +346,9 @@ Now, add a `.gitlab-ci.yml` file with the following content:
 image: node:6.2.0
 
 pages:
-  # Uncomment if you have any custom filters, plugins, or renderers that have dependencies
-  #cache:
-  #  paths:
-  #  - node_modules/
+  cache:
+    paths:
+    - node_modules/
 
   script:
   - npm install spiderworks -g
