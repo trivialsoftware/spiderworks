@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
 //----------------------------------------------------------------------------------------------------------------------
-/// Main Spiderworks Script
-///
-/// @module
+// Main Spiderworks Script
+//
+// @module
 //----------------------------------------------------------------------------------------------------------------------
 
-var path = require('path');
-var chalk = require('chalk');
-var program = require('commander');
+const path = require('path');
+const chalk = require('chalk');
+const program = require('commander');
 
-var pkg = require('./package');
-var paths = require('./lib/paths');
-var contentGen = require('./lib/generator');
-var devServer = require('./lib/devel');
+const pkg = require('./package');
+const paths = require('./lib/paths');
+const contentGen = require('./lib/generator');
+const devServer = require('./lib/devel');
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -51,15 +51,15 @@ program
     .description('Cleans the generated source files from <directory>.')
     .action((directory) =>
     {
-        var sourceDir = process.cwd();
+        let sourceDir = process.cwd();
         if(directory)
         {
             sourceDir = path.join(sourceDir, directory);
         } // end if
         paths.sourceDir = sourceDir;
-        
+
         console.log(chalk.magenta('>> ') + `Cleaning "${ chalk.cyan(sourceDir) }".`);
-        
+
         contentGen.clean(sourceDir)
             .then(() =>
             {
@@ -82,7 +82,7 @@ program
     .option("-c, --clean", "clean the output directory before generation")
     .action((directory, options) =>
     {
-        var sourceDir = process.cwd();
+        let sourceDir = process.cwd();
         if(directory)
         {
             sourceDir = path.join(sourceDir, directory);
@@ -113,13 +113,13 @@ program
     .option("-p, --port <port>", "The port to start the development HTTP server on")
     .action((directory, options) =>
     {
-        var sourceDir = process.cwd();
+        let sourceDir = process.cwd();
         if(directory)
         {
             sourceDir = path.join(sourceDir, directory);
         } // end if
         paths.sourceDir = sourceDir;
-        
+
         // Start the dev server
         devServer.start(sourceDir, { port: options.port });
     });
