@@ -1,6 +1,6 @@
 {
   "name": "spiderworks",
-  "version": "0.9.0",
+  "version": "0.9.5",
   "description": "A simple, markdown-based flat-file CMS.",
   "main": "main.js",
   "bin": {
