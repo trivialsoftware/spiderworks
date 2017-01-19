@@ -6,14 +6,16 @@ title: 'Home Page'
 
 # Welcome to Spiderworks
 
-<div class="btn-toolbar" style="margin-bottom: 10px;">
-    <a href="#" class="btn btn-large btn-primary">
+<div style="margin-bottom: 10px;">
+    <button type="button" href="https://github.com/trivialsoftware/spiderworks" class="btn btn-large btn-primary">
         Spiderworks homepage
-    </a>
-    <a href="#" class="btn btn-large btn-default">
+    </button>
+    <button type="button" href="https://github.com/trivialsoftware/spiderworks#options" class="btn btn-large btn-secondary">
         Documentation
-    </a>
+    </button>
 </div>
 
-This is your first Spiderworks page. You can do with it as you wish. If you're looking for help, check out
-[the documentation](). Otherwise, have fun!
+This is your first Spiderworks page. You can do with it as you wish.
+
+If you're looking for help, check out [the documentation](https://github.com/trivialsoftware/spiderworks#options).
+Otherwise, have fun!
